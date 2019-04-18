@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.jl.myweb.mapper.UserMapper">
+	
+	<!-- 插入用户数据 -->
+	<!-- Integer insert(User user) -->
+	<insert id="insert">
+		INSERT INTO t_user (
+			username, password,
+			salt, gender,
+			phone, email,
+			avatar, is_delete,
+			created_user, created_time,
+			modified_user, modified_time
+		) VALUES (
+			#{username}, #{password},
+			#{salt}, #{gender},
+			#{phone}, #{email},
+			#{avatar}, #{isDelete},
+			#{createdUser}, #{createdTime},
+			#{modifiedUser}, #{modifiedTime}
+		)
+	</insert>
+	
+	
+	
+	<!-- 根据用户名查询用户数据 -->
+	<!-- User findByUsername(String username) -->
+	<select id="findByUsername"
+		resultType="cn.jl.myweb.entity.User">
+		SELECT 
+			uid, username,
+			password, salt, 
+			avatar,
+			is_delete AS isDelete
+		FROM 
+			t_user 
+		WHERE 
+			username=#{username}
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
