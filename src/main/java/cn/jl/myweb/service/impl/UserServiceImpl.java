@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import cn.jl.myweb.entity.User;
 import cn.jl.myweb.mapper.UserMapper;
@@ -55,14 +56,18 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	/**
-	 * 
-	 * @param salt
-	 * @param password 
-	 * @return
+	 * 获得MD5摘要算法后的密码
+	 * @param salt 加密的盐值
+	 * @param password 原始密码
+	 * @return MD5后的摘要算法的密码
 	 */
 	private String getMd5Password(String salt, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		// 加密规则：使用“盐+密码+盐”作为原始数据，执行5次加密
+		String md5Password = salt + password + salt;
+		for (int i = 0; i < 5; i++) {
+			md5Password = DigestUtils.md5DigestAsHex(md5Password.getBytes()).toUpperCase();
+		}
+		return md5Password;
 	}
 
 	/**

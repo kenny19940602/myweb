@@ -25,8 +25,8 @@ public class UserServiceTestCase {
 	public void reg() {
 		try {
 			User user = new User();
-			user.setUsername("upper");
-			user.setPassword("1234");
+			user.setUsername("jin");
+			user.setPassword("123411");
 			user.setGender(1);
 			user.setPhone("13800138008");
 			user.setEmail("upper@tedu.cn");
