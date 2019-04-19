@@ -11,6 +11,8 @@ import cn.jl.myweb.entity.User;
 import cn.jl.myweb.mapper.UserMapper;
 import cn.jl.myweb.service.IUserService;
 import cn.jl.myweb.service.ex.InsertException;
+import cn.jl.myweb.service.ex.PasswordNotMatchException;
+import cn.jl.myweb.service.ex.UserNotFoundException;
 import cn.jl.myweb.service.ex.UsernameDuplicateException;
 
 /**
@@ -50,9 +52,38 @@ public class UserServiceImpl implements IUserService{
 			throw new UsernameDuplicateException("注册失败！您尝试注册的用户名(" + username + ")已经被占用！");
 			
 		}
-					
-					
-					
+	}
+	
+	@Override
+	public User login(String username, String password) throws UserNotFoundException, PasswordNotMatchException {
+		 // 根据参数username查询用户：User findByUsername(String username)
+		User user = findByUsername(username);
+	    // 判断查询结果是否为null
+		if(user==null) {
+			// 是：抛出UserNotFoundException
+			throw new UserNotFoundException("登录失败！尝试登录的用户不存在！");
+		}
+		// 判断is_delete是否标记为已删除：isDelete属性值是否为1
+		if(user.getIsDelete()==1) {
+			// 是：抛出UserNotFoundException
+			throw new UserNotFoundException("登录失败！尝试登录的用户不存在！");
+		}
+		// 从查询结果中获取盐值
+		String salt = user.getSalt();
+		// 对参数password执行加密
+		String md5Password = getMd5Password(salt, password);
+	    // 判断查询结果中的密码与刚加密结果是否一致
+		if(user.getPassword().equals(md5Password)) {
+			// 是：
+			// -- 返回查询结果
+			user.setPassword(null);
+			user.setSalt(null);
+			user.setIsDelete(null);
+			return user;
+		}
+		// 否：抛出PasswordNotMatchException
+		throw new PasswordNotMatchException("登录失败！密码错误！");
+			
 	}
 
 	/**
@@ -87,5 +118,7 @@ public class UserServiceImpl implements IUserService{
 	 */
 	private User findByUsername(String username) {
 		return mapper.findByUsername(username);
-	};
+	}
+
+	
 }

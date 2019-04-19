@@ -22,7 +22,11 @@ public class UserController extends BaseController{
 	public ResponseResult<Void> reg(User user) {
 		service.reg(user);
 		return new ResponseResult<Void>(SUCCESS, "恭喜你注册成功！");
-		
+	}
+	
+	@RequestMapping("login")
+	public ResponseResult<User> login(String username,String password){
+		return new  ResponseResult<User>(SUCCESS, "登录成功！", service.login(username, password));
 	}
 
 }

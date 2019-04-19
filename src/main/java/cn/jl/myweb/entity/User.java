@@ -18,7 +18,7 @@ public class User extends BaseEntity {
 	private String phone;
 	private String email;
 	private String avatar;
-	private int isDelete;
+	private Integer isDelete;
 
 	public int getUid() {
 		return uid;
@@ -84,11 +84,11 @@ public class User extends BaseEntity {
 		this.avatar = avatar;
 	}
 
-	public int getIsDelete() {
+	public Integer getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(int isDelete) {
+	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
 	}
 
