@@ -13,7 +13,7 @@ import cn.jl.myweb.util.ResponseResult;
  */
 @RestController
 @RequestMapping("user")
-public class UserController {
+public class UserController extends BaseController{
 	
 	@Autowired
 	private IUserService service;
@@ -21,7 +21,7 @@ public class UserController {
 	@RequestMapping("reg")
 	public ResponseResult<Void> reg(User user) {
 		service.reg(user);
-		return new ResponseResult<Void>(200L, "成功！");
+		return new ResponseResult<Void>(SUCCESS, "恭喜你注册成功！");
 		
 	}
 

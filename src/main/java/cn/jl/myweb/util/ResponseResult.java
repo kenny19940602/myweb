@@ -11,7 +11,7 @@ public class ResponseResult<T> implements Serializable {
 
 	private static final long serialVersionUID = 8254162176696261696L;
 
-	private Long state;
+	private Integer state;
 	private String message;
 	private T data;
 
@@ -19,7 +19,7 @@ public class ResponseResult<T> implements Serializable {
 		super();
 	}
 
-	public ResponseResult(Long state, String message) {
+	public ResponseResult(Integer state, String message) {
 		super();
 		this.state = state;
 		this.message = message;
@@ -30,18 +30,18 @@ public class ResponseResult<T> implements Serializable {
 		this.data = data;
 	}
 
-	public ResponseResult(Long state, String message, T data) {
+	public ResponseResult(Integer state, String message, T data) {
 		super();
 		this.state = state;
 		this.message = message;
 		this.data = data;
 	}
 
-	public Long getState() {
+	public Integer getState() {
 		return state;
 	}
 
-	public void setState(Long state) {
+	public void setState(Integer state) {
 		this.state = state;
 	}
 
