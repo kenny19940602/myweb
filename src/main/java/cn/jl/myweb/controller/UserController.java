@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sun.istack.internal.logging.Logger;
+
 import cn.jl.myweb.entity.User;
 import cn.jl.myweb.service.IUserService;
 import cn.jl.myweb.util.ResponseResult;
@@ -14,6 +16,8 @@ import cn.jl.myweb.util.ResponseResult;
 @RestController
 @RequestMapping("user")
 public class UserController extends BaseController{
+	
+	private static Logger log = Logger.getLogger(UserController.class);
 	
 	@Autowired
 	private IUserService service;

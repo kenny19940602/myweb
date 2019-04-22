@@ -22,11 +22,12 @@
 	<body>
 		<!--头部-->
 		<header class="header">
+		
 
-			<img src="../images/index/stumalllogo.png" alt="" />
+			<img src="../images/index/header.png" alt="" />
 			<span class="pull-right"><h3><small>欢迎访问</small><b>MyWeb</b></h3></span>
 
-		</header>s
+		</header>
 		<!--主体-->
 		<div class="container mycontent text-left">
 			<!--透明层 -->
@@ -150,9 +151,18 @@
 		</footer>
 		<!--页脚结束-->
 	<script type="text/javascript">
+	function validate(){
+		var pwd = $("#pwd").val();
+		var pwd = $("pwd1").val();
+		if(pwd == pwd1){
+			$("#tishi").html("两次密码相同");
+			$("#tishi").css("color","green");
+			$()
+		}
+	}
 	$("#btn-reg").click(function(){
 		$.ajax({
-			"url":"/users/reg",
+			"url":"/user/reg",
 			"data":$("#form-reg").serialize(),
 			"type":"POST",
 			"dataType":"json",
