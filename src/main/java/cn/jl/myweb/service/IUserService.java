@@ -2,10 +2,7 @@ package cn.jl.myweb.service;
 
 
 import cn.jl.myweb.entity.User;
-import cn.jl.myweb.service.ex.InsertException;
-import cn.jl.myweb.service.ex.PasswordNotMatchException;
-import cn.jl.myweb.service.ex.UserNotFoundException;
-import cn.jl.myweb.service.ex.UsernameDuplicateException;
+import cn.jl.myweb.service.ex.*;
 
 /**
  * 处理用户数据的业务层接口
@@ -29,5 +26,7 @@ public interface IUserService {
 	 * @throws PasswordNotMatchException 用户密码不正确异常
 	 */
 	User login(String username,String password) throws UserNotFoundException,PasswordNotMatchException;
+
+	void  setPassword(Integer uid,String username,String oldPassword,String newPassword)throws UserNotFoundException,PasswordNotMatchException, UpdateException;
 
 }

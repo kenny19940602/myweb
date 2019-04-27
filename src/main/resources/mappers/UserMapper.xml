@@ -40,8 +40,36 @@
 		WHERE 
 			username=#{username}
 	</select>
-	
-	
+
+	<!-- 根据用户uid查找用户数据 -->
+	<!-- User findByUid(Integer uid) -->
+	<select id="findByUid" resultType="cn.jl.myweb.entity.User">
+		SELECT
+			password,salt,
+			is_Delete AS isDelete
+		FROM
+			t_user
+		WHERE
+			uid=#{uid}
+	</select>
+	<!-- 修改用户密码 -->
+	<!--Integer updatePassword (
+	@Param(uid) Integer uid,
+	@Param(password) String password,
+	@Param(modifiedUser) String modifiedUser,
+	@Param(modifiedTime) Date modifiedTime)-->
+	<update id="updatePassword" >
+		UPDATE
+			t_user
+		SET
+			password=#{password},
+			modified_User=#{modifiedUser},
+			modified_Time=#{modifiedTime}
+		WHERE
+			uid=#{uid}
+	</update>
+
+
 </mapper>
 
 

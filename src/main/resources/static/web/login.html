@@ -155,7 +155,7 @@
 	<script type="text/javascript">
 	$("#btn-login").click(function(){
 		$.ajax({
-			"url":"/users/login",
+			"url":"/user/login",
 			"data":$("#form-login").serialize(),
 			"type":"POST",
 			"dataType":"json",
@@ -166,7 +166,7 @@
 						expire: 7
 					});
 					//将服务器返回的用户数据json.data存入到cookie
-					//location.href="index.html";
+					location.href="index.html";
 				} else {
 					alert(json.message);
 				}

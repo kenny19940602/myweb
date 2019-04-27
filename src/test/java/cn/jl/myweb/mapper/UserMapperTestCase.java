@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import cn.jl.myweb.entity.User;
 
+import java.util.Date;
 
 
 /**
@@ -33,8 +34,20 @@ public class UserMapperTestCase {
 	
 	@Test
 	public void findByName() {
-		User user = mapper.findByUsername("jinlong");
+		User user = mapper.findByUsername("jinlong11");
 		System.out.println(user);
+	}
+
+	@Test
+	public void findByUid(){
+		User user = mapper.findByUid(7);
+		System.out.println(user);
+	}
+
+	@Test
+	public void updatePassword(){
+		Integer rows = mapper.updatePassword(7,"123456","jinlong",new Date() );
+		System.out.println(rows);
 	}
 
 }

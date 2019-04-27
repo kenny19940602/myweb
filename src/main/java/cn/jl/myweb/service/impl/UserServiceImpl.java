@@ -1,19 +1,16 @@
 package cn.jl.myweb.service.impl;
 
-import java.util.Date;
-import java.util.UUID;
-
+import cn.jl.myweb.entity.User;
+import cn.jl.myweb.mapper.UserMapper;
+import cn.jl.myweb.service.IUserService;
+import cn.jl.myweb.service.ex.*;
+import cn.jl.myweb.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import cn.jl.myweb.entity.User;
-import cn.jl.myweb.mapper.UserMapper;
-import cn.jl.myweb.service.IUserService;
-import cn.jl.myweb.service.ex.InsertException;
-import cn.jl.myweb.service.ex.PasswordNotMatchException;
-import cn.jl.myweb.service.ex.UserNotFoundException;
-import cn.jl.myweb.service.ex.UsernameDuplicateException;
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * 处理用户数据的业务层实现类
@@ -86,6 +83,25 @@ public class UserServiceImpl implements IUserService{
 			
 	}
 
+	@Override
+	public void setPassword(Integer uid, String username, String oldPassword, String newPassword) throws UserNotFoundException, PasswordNotMatchException, UpdateException {
+		User result = findByUid(uid);
+		if(result==null){
+			throw  new UserNotFoundException("用户修改密码失败！请检查登录是否超时！");
+		}
+		if(result.getIsDelete().equals(1)){
+			throw  new UserNotFoundException("用户修改密码失败！请检查登录是否超时！");
+		}
+		String salt = result.getSalt();
+		String oldMd5Password = getMd5Password(salt,oldPassword);
+		if(!oldMd5Password.equals(result.getPassword())){
+			throw  new PasswordNotMatchException("用户修改密码失败！用户密码错误！");
+		}
+		String newMd5Password = getMd5Password(salt,newPassword);
+		updatePassword(uid,newMd5Password,username,new Date());
+
+	}
+
 	/**
 	 * 获得MD5摘要算法后的密码
 	 * @param salt 加密的盐值
@@ -110,15 +126,38 @@ public class UserServiceImpl implements IUserService{
 		if(rows!=1) {
 			throw new InsertException();
 		}
-	};
+	}
 
 	/**
 	 * 根据用户名查找用户数据
 	 * @param username 要查找的用户名
 	 */
-	private User findByUsername(String username) {
-		return mapper.findByUsername(username);
-	}
+	private User findByUsername(String username) {return mapper.findByUsername(username);}
 
-	
+	/**
+	 * 根据用户uid查找用户数据
+	 * @param uid 要查找用户信息的uid
+	 * @return 查找到匹配的用户信息则返回信息，如果没有查询到用户信息则返回null
+	 */
+	private User findByUid(Integer uid){return mapper.findByUid(uid);}
+
+	/**
+	 * 修改用户密码
+	 * @param uid 用户的uid
+	 * @param password 用户要更改的密码
+	 * @param modifiedUser 更改用户名
+	 * @param modifiedTime 更改时间
+	 * @return 受影响的行数
+	 */
+	private void updatePassword (
+			Integer uid,
+			String password,
+			String modifiedUser,
+			Date modifiedTime){
+			Integer rows = mapper.updatePassword(uid,password,modifiedUser,modifiedTime);
+			if(rows!=1){
+				Log.error("修改用户数据发生异常");
+				throw new UpdateException("发生未知错误！请重试！");
+			}
+	}
 }

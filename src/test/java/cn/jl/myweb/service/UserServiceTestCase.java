@@ -25,7 +25,7 @@ public class UserServiceTestCase {
 	public void reg() {
 		try {
 			User user = new User();
-			user.setUsername("jin");
+			user.setUsername("jin1");
 			user.setPassword("123411");
 			user.setGender(1);
 			user.setPhone("13800138008");
@@ -34,6 +34,21 @@ public class UserServiceTestCase {
 			service.reg(user);
 		} catch (ServiceException e) {
 			System.out.println(getClass().getName());
+			System.err.println(e.getMessage());
+		}
+	}
+
+	@Test
+	public void changePassword() {
+		try {
+			Integer uid = 4;
+			String username = "超级管理员";
+			String oldPassword = "123411";
+			String newPassword = "8888";
+			service.setPassword(uid, username, oldPassword, newPassword);
+			System.err.println("OK.");
+		} catch (ServiceException e) {
+			System.err.println(e.getClass().getName());
 			System.err.println(e.getMessage());
 		}
 	}
