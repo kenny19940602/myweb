@@ -83,6 +83,21 @@ public class UserServiceImpl implements IUserService{
 			
 	}
 
+    @Override
+    public User getByUid(Integer uid) {
+        User result = findByUid(uid);
+        if(result==null){
+            throw  new UserNotFoundException("获取用户信息失败！尝试访问的用户不存在！");
+        }
+        if(result.getIsDelete().equals(1)){
+            throw  new UserNotFoundException("获取用户信息失败！尝试访问的用户不存在！");
+        }
+        result.setIsDelete(null);
+        result.setPassword(null);
+        result.setSalt(null);
+        return result;
+    }
+
 	@Override
 	public void setPassword(Integer uid, String username, String oldPassword, String newPassword) throws UserNotFoundException, PasswordNotMatchException, UpdateException {
 		User result = findByUid(uid);
@@ -102,7 +117,23 @@ public class UserServiceImpl implements IUserService{
 
 	}
 
-	/**
+    @Override
+    public void changeUserInfo(User user) throws UserNotFoundException, UpdateException {
+        User result = findByUid(user.getUid());
+        if(result==null){
+            throw new UserNotFoundException("修改用户信息失败！请检查登录是否超时！");
+        }
+        if(result.getIsDelete().equals(1)){
+            throw new UserNotFoundException("修改用户信息失败！请检查登录是否超时！");
+        }
+        user.setModifiedUser(result.getUsername());
+        user.setModifiedTime(new Date());
+        updateUserInfo(user);
+    }
+
+
+
+    /**
 	 * 获得MD5摘要算法后的密码
 	 * @param salt 加密的盐值
 	 * @param password 原始密码
@@ -147,7 +178,6 @@ public class UserServiceImpl implements IUserService{
 	 * @param password 用户要更改的密码
 	 * @param modifiedUser 更改用户名
 	 * @param modifiedTime 更改时间
-	 * @return 受影响的行数
 	 */
 	private void updatePassword (
 			Integer uid,
@@ -160,4 +190,16 @@ public class UserServiceImpl implements IUserService{
 				throw new UpdateException("发生未知错误！请重试！");
 			}
 	}
+
+    /**
+     * 修改用户信息
+     * @param user 要修改的用户信息
+     */
+    private void updateUserInfo (User user){
+        Integer rows = mapper.updateUserInfo(user);
+        if(rows!=1){
+            Log.error("修改用户信息发生异常");
+            throw new UpdateException("发生未知错误！请重试！");
+        }
+    };
 }

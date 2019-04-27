@@ -9,6 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import cn.jl.myweb.entity.User;
 import cn.jl.myweb.service.ex.ServiceException;
 
+import java.util.Date;
+
 /**
  * 用户数据业务层测试类
  * @author JinLong
@@ -25,9 +27,10 @@ public class UserServiceTestCase {
 	public void reg() {
 		try {
 			User user = new User();
-			user.setUsername("jin1");
+			user.setUsername("test1");
 			user.setPassword("123411");
 			user.setGender(1);
+			user.setIsDelete(1);
 			user.setPhone("13800138008");
 			user.setEmail("upper@tedu.cn");
 			user.setAvatar("http://www.tedu.cn/upper.png");
@@ -47,6 +50,33 @@ public class UserServiceTestCase {
 			String newPassword = "8888";
 			service.setPassword(uid, username, oldPassword, newPassword);
 			System.err.println("OK.");
+		} catch (ServiceException e) {
+			System.err.println(e.getClass().getName());
+			System.err.println(e.getMessage());
+		}
+	}
+	@Test
+	public void updateUserInfo(){
+		try {
+			User user = new User();
+			user.setUid(15);
+			user.setGender(1);
+			user.setPhone("13100131009");
+			user.setEmail("root@qq.com");
+			service.changeUserInfo(user);
+			System.err.println("OK.");
+		} catch (ServiceException e) {
+			System.err.println(e.getClass().getName());
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void getByUid() {
+		try {
+			Integer uid = 8;
+			User data = service.getByUid(uid);
+			System.err.println(data);
 		} catch (ServiceException e) {
 			System.err.println(e.getClass().getName());
 			System.err.println(e.getMessage());

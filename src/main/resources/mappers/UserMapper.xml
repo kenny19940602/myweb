@@ -45,6 +45,8 @@
 	<!-- User findByUid(Integer uid) -->
 	<select id="findByUid" resultType="cn.jl.myweb.entity.User">
 		SELECT
+			username, phone,
+        	email, gender,
 			password,salt,
 			is_Delete AS isDelete
 		FROM
@@ -69,6 +71,20 @@
 			uid=#{uid}
 	</update>
 
+	<!--修改用户信息-->
+	<!--Integer updateUserInfo (User user)-->
+	<update id="updateUserInfo">
+		UPDATE
+			t_user
+		SET
+			email=#{email},
+			phone=#{phone},
+			gender=#{gender},
+			modified_User=#{modifiedUser},
+			modified_Time=#{modifiedTime}
+		WHERE
+			uid=#{uid}
+	</update>
 
 </mapper>
 

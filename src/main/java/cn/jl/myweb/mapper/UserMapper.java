@@ -25,6 +25,13 @@ public interface UserMapper {
 	User findByUsername(String username);
 
 	/**
+	 * 根据用户uid查找用户数据
+	 * @param uid 要查找用户信息的uid
+	 * @return 查找到匹配的用户信息则返回信息，如果没有查询到用户信息则返回null
+	 */
+	User findByUid(Integer uid);
+
+	/**
 	 * 修改用户密码
 	 * @param uid 用户的uid
 	 * @param password 用户要更改的密码
@@ -39,10 +46,10 @@ public interface UserMapper {
 			@Param("modifiedTime") Date modifiedTime);
 
 	/**
-	 * 根据用户uid查找用户数据
-	 * @param uid 要查找用户信息的uid
-	 * @return 查找到匹配的用户信息则返回信息，如果没有查询到用户信息则返回null
+	 * 修改用户信息
+	 * @param user 要修改的用户信息
+	 * @return 受影响的行数
 	 */
-	User findByUid(Integer uid);
+	Integer updateUserInfo (User user);
 
 }

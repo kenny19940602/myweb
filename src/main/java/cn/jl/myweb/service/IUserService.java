@@ -27,6 +27,30 @@ public interface IUserService {
 	 */
 	User login(String username,String password) throws UserNotFoundException,PasswordNotMatchException;
 
+	/**
+	 * 修改用户密码
+	 * @param uid 要修改密码的用户uid
+	 * @param username 要修改密码的用户名
+	 * @param oldPassword 用户的原密码
+	 * @param newPassword 用户的新密码
+	 * @throws UserNotFoundException 用户不存在的异常
+	 * @throws PasswordNotMatchException 用户密码错误的异常
+	 * @throws UpdateException 修改用户密码的异常类
+	 */
 	void  setPassword(Integer uid,String username,String oldPassword,String newPassword)throws UserNotFoundException,PasswordNotMatchException, UpdateException;
 
+	/**
+	 * 修改用户信息
+	 * @param user 要修改的用户信息
+	 * @throws UserNotFoundException 用户不存在的异常
+	 * @throws UpdateException 修改用户密码的异常类
+	 */
+	void changeUserInfo(User user)throws  UserNotFoundException,UpdateException;
+
+	/**
+	 * 根据用户uid查询用户信息
+	 * @param uid 要查询用户的uid
+	 * @return 用户的信息
+	 */
+	User getByUid(Integer uid);
 }

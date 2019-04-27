@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="227a8551-a1a8-42f0-823e-fb67c3c15864" name="Default Changelist" comment="增加拦截器（添加过滤条件）&#10;封装获取uid方法（获取uid更方便）&#10;增加修改密码功能&#10;增加log4j2  工具类 （方便使用）&#10;增加登录成功后跳转主页">
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/configuration/LoginInterceptorConfigurer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/interceptor/Loginlnterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/BaseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/IUserService.java" afterDir="false" />
@@ -15,8 +10,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/ResponseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/ResponseResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/web/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/web/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/web/password.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/web/password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/web/userdata.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/web/userdata.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cn/jl/myweb/mapper/UserMapperTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/jl/myweb/mapper/UserMapperTestCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cn/jl/myweb/service/UserServiceTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cn/jl/myweb/service/UserServiceTestCase.java" afterDir="false" />
     </list>
@@ -49,8 +43,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/MyWebApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="189">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/IUserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="51" column="27" lean-forward="true" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+              <folding>
+                <element signature="docComment;class#IUserService#0" expanded="true" />
+                <element signature="docComment;method#login#0;class#IUserService#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,43 +65,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/cn/jl/myweb/service/UserServiceTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
+            <state relative-caret-position="495">
+              <caret line="81" column="47" lean-forward="true" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/BaseController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="91" selection-start-line="91" selection-end-line="91" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;class#UserServiceImpl#0" expanded="true" />
-                <element signature="docComment;method#getMd5Password#0;class#UserServiceImpl#0" expanded="true" />
-                <element signature="docComment;method#insert#0;class#UserServiceImpl#0" expanded="true" />
-                <element signature="docComment;method#findByUsername#0;class#UserServiceImpl#0" expanded="true" />
-                <element signature="docComment;method#findByUid#0;class#UserServiceImpl#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="44" column="65" lean-forward="true" selection-start-line="44" selection-start-column="65" selection-end-line="44" selection-end-column="65" />
+            <state relative-caret-position="359">
+              <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,14 +86,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/ResponseResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            <state relative-caret-position="448">
+              <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
               <folding>
+                <element signature="e#872#873#0" expanded="true" />
                 <element signature="e#891#892#0" expanded="true" />
+                <element signature="e#931#932#0" expanded="true" />
                 <element signature="e#956#957#0" expanded="true" />
+                <element signature="e#987#988#0" expanded="true" />
                 <element signature="e#1008#1009#0" expanded="true" />
+                <element signature="e#1051#1052#0" expanded="true" />
                 <element signature="e#1080#1081#0" expanded="true" />
+                <element signature="e#1103#1104#0" expanded="true" />
                 <element signature="e#1121#1122#0" expanded="true" />
+                <element signature="e#1153#1154#0" expanded="true" />
                 <element signature="e#1176#1177#0" expanded="true" />
               </folding>
             </state>
@@ -120,37 +107,41 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/web/userdata.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="1901">
+              <caret line="312" column="7" lean-forward="true" selection-start-line="312" selection-start-column="7" selection-end-line="312" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/configuration/LoginInterceptorConfigurer.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+            <state relative-caret-position="729">
+              <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="docComment;method#updatePassword#0;class#UserMapper#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/interceptor/Loginlnterceptor.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+            <state relative-caret-position="560">
+              <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="docComment;class#Loginlnterceptor#0" expanded="true" />
+                <element signature="docComment;class#UserServiceImpl#0" expanded="true" />
+                <element signature="docComment;method#getMd5Password#0;class#UserServiceImpl#0" expanded="true" />
+                <element signature="docComment;method#insert#0;class#UserServiceImpl#0" expanded="true" />
+                <element signature="docComment;method#findByUsername#0;class#UserServiceImpl#0" expanded="true" />
+                <element signature="docComment;method#findByUid#0;class#UserServiceImpl#0" expanded="true" />
+                <element signature="docComment;method#updatePassword#0;class#UserServiceImpl#0" expanded="true" />
+                <element signature="docComment;method#updateUserInfo#0;class#UserServiceImpl#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,21 +164,22 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/MyWebApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/jl/myweb/mapper/UserMapperTestCase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/IUserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/ex/UpdateException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/Log.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/jl/myweb/service/UserServiceTestCase.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/BaseController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/web/password.html" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/ResponseResult.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/web/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/interceptor/Loginlnterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/configuration/LoginInterceptorConfigurer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/cn/jl/myweb/mapper/UserMapperTestCase.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/web/userdata.html" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/IUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/ex/UpdateException.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cn/jl/myweb/service/UserServiceTestCase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/ResponseResult.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -211,8 +203,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="148" />
-    <option name="y" value="2" />
+    <option name="x" value="185" />
+    <option name="y" value="24" />
     <option name="width" value="1612" />
     <option name="height" value="1000" />
   </component>
@@ -228,6 +220,130 @@
             <path>
               <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="myweb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mappers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="myweb" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -266,7 +382,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.MyWebApplication">
-    <configuration name="UserMapperTestCase.findByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserMapperTestCase.updateUserInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="myweb" />
       <extension name="coverage">
         <pattern>
@@ -276,55 +392,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="cn.jl.myweb.mapper" />
       <option name="MAIN_CLASS_NAME" value="cn.jl.myweb.mapper.UserMapperTestCase" />
-      <option name="METHOD_NAME" value="findByName" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserMapperTestCase.findByUid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myweb" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.jl.myweb.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.jl.myweb.mapper" />
-      <option name="MAIN_CLASS_NAME" value="cn.jl.myweb.mapper.UserMapperTestCase" />
-      <option name="METHOD_NAME" value="findByUid" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserMapperTestCase.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myweb" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.jl.myweb.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.jl.myweb.mapper" />
-      <option name="MAIN_CLASS_NAME" value="cn.jl.myweb.mapper.UserMapperTestCase" />
-      <option name="METHOD_NAME" value="insert" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserMapperTestCase.updatePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="myweb" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.jl.myweb.mapper.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.jl.myweb.mapper" />
-      <option name="MAIN_CLASS_NAME" value="cn.jl.myweb.mapper.UserMapperTestCase" />
-      <option name="METHOD_NAME" value="updatePassword" />
+      <option name="METHOD_NAME" value="updateUserInfo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -346,6 +414,54 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserServiceTestCase.getByUid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myweb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jl.myweb.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jl.myweb.service" />
+      <option name="MAIN_CLASS_NAME" value="cn.jl.myweb.service.UserServiceTestCase" />
+      <option name="METHOD_NAME" value="getByUid" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTestCase.reg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myweb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jl.myweb.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jl.myweb.service" />
+      <option name="MAIN_CLASS_NAME" value="cn.jl.myweb.service.UserServiceTestCase" />
+      <option name="METHOD_NAME" value="reg" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTestCase.updateUserInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="myweb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.jl.myweb.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.jl.myweb.service" />
+      <option name="MAIN_CLASS_NAME" value="cn.jl.myweb.service.UserServiceTestCase" />
+      <option name="METHOD_NAME" value="updateUserInfo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="myweb" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.jl.myweb.MyWebApplication" />
@@ -357,20 +473,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.UserMapperTestCase.findByName" />
-      <item itemvalue="JUnit.UserMapperTestCase.insert" />
-      <item itemvalue="JUnit.UserMapperTestCase.findByUid" />
-      <item itemvalue="JUnit.UserMapperTestCase.updatePassword" />
       <item itemvalue="Spring Boot.MyWebApplication" />
       <item itemvalue="JUnit.UserServiceTestCase.changePassword" />
+      <item itemvalue="JUnit.UserMapperTestCase.updateUserInfo" />
+      <item itemvalue="JUnit.UserServiceTestCase.updateUserInfo" />
+      <item itemvalue="JUnit.UserServiceTestCase.reg" />
+      <item itemvalue="JUnit.UserServiceTestCase.getByUid" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceTestCase.getByUid" />
+        <item itemvalue="JUnit.UserServiceTestCase.reg" />
+        <item itemvalue="JUnit.UserServiceTestCase.updateUserInfo" />
+        <item itemvalue="JUnit.UserMapperTestCase.updateUserInfo" />
         <item itemvalue="JUnit.UserServiceTestCase.changePassword" />
-        <item itemvalue="JUnit.UserMapperTestCase.findByName" />
-        <item itemvalue="JUnit.UserMapperTestCase.updatePassword" />
-        <item itemvalue="JUnit.UserMapperTestCase.findByUid" />
-        <item itemvalue="JUnit.UserMapperTestCase.insert" />
       </list>
     </recent_temporary>
   </component>
@@ -387,7 +503,7 @@
       <workItem from="1556114585768" duration="2077000" />
       <workItem from="1556116704252" duration="1421000" />
       <workItem from="1556198556011" duration="5329000" />
-      <workItem from="1556330127671" duration="10936000" />
+      <workItem from="1556330127671" duration="16206000" />
     </task>
     <task id="LOCAL-00001" summary="增加用户登录修改数据异常类">
       <created>1556330633596</created>
@@ -396,48 +512,56 @@
       <option name="project" value="LOCAL" />
       <updated>1556330633596</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="增加拦截器（添加过滤条件）&#10;封装获取uid方法（获取uid更方便）&#10;增加修改密码功能&#10;增加log4j2  工具类 （方便使用）&#10;增加登录成功后跳转主页">
+      <created>1556345412950</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556345412950</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserMapperTestCase_findByName - 2019.04.25 at 21h 58m 31s.xml">
-      <configuration name="UserMapperTestCase.findByName" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserMapperTestCase_insert - 2019.04.25 at 21h 59m 00s.xml">
-      <configuration name="UserMapperTestCase.insert" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserMapperTestCase_findByName - 2019.04.25 at 21h 59m 11s.xml">
-      <configuration name="UserMapperTestCase.findByName" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserMapperTestCase_findByUid - 2019.04.25 at 22h 02m 33s.xml">
-      <configuration name="UserMapperTestCase.findByUid" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserMapperTestCase_updatePassword - 2019.04.25 at 22h 07m 39s.xml">
-      <configuration name="UserMapperTestCase.updatePassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserMapperTestCase_findByName - 2019.04.25 at 22h 07m 49s.xml">
-      <configuration name="UserMapperTestCase.findByName" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserServiceTestCase_changePassword - 2019.04.27 at 11h 32m 07s.xml">
-      <configuration name="UserServiceTestCase.changePassword" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserServiceTestCase_changePassword - 2019.04.27 at 11h 32m 41s.xml">
-      <configuration name="UserServiceTestCase.changePassword" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UserServiceTestCase_changePassword - 2019.04.27 at 11h 33m 52s.xml">
       <configuration name="UserServiceTestCase.changePassword" configurationId="JUnit" />
     </history-entry>
     <history-entry file="UserServiceTestCase_changePassword - 2019.04.27 at 11h 34m 39s.xml">
       <configuration name="UserServiceTestCase.changePassword" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserMapperTestCase_updateUserInfo - 2019.04.27 at 14h 29m 44s.xml">
+      <configuration name="UserMapperTestCase.updateUserInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserMapperTestCase_updateUserInfo - 2019.04.27 at 14h 35m 12s.xml">
+      <configuration name="UserMapperTestCase.updateUserInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTestCase_updateUserInfo - 2019.04.27 at 14h 58m 51s.xml">
+      <configuration name="UserServiceTestCase.updateUserInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTestCase_updateUserInfo - 2019.04.27 at 14h 59m 56s.xml">
+      <configuration name="UserServiceTestCase.updateUserInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTestCase_updateUserInfo - 2019.04.27 at 15h 01m 28s.xml">
+      <configuration name="UserServiceTestCase.updateUserInfo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTestCase_reg - 2019.04.27 at 15h 02m 12s.xml">
+      <configuration name="UserServiceTestCase.reg" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTestCase_reg - 2019.04.27 at 15h 02m 45s.xml">
+      <configuration name="UserServiceTestCase.reg" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTestCase_getByUid - 2019.04.27 at 22h 18m 55s.xml">
+      <configuration name="UserServiceTestCase.getByUid" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19763000" />
+    <option name="totallyTimeSpent" value="25033000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="148" y="2" width="1612" height="1000" extended-state="0" />
+    <frame x="185" y="24" width="1612" height="1000" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22372663" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22372663" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -447,7 +571,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962137" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.584" weight="0.3432304" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.53578335" weight="0.7553444" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -455,8 +579,8 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.504" side_tool="true" weight="0.3964365" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.496" visible="true" weight="0.2375297" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.46421662" side_tool="true" weight="0.3432304" />
+      <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.496" visible="true" weight="0.2375297" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" sideWeight="0.49935567" weight="0.32897863" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49838814" weight="0.32897863" />
@@ -503,13 +627,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/ex/PasswordNotMatchException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/Throwable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -532,33 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/ex/UpdateException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="docComment;class#UpdateException#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/jl/myweb/mapper/UserMapperTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="43" column="33" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/IUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="docComment;class#IUserService#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -600,27 +690,10 @@
         <state relative-caret-position="-1134" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/web/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="155" column="34" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="44" column="65" lean-forward="true" selection-start-line="44" selection-start-column="65" selection-end-line="44" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,21 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#UserServiceImpl#0" expanded="true" />
-            <element signature="docComment;method#getMd5Password#0;class#UserServiceImpl#0" expanded="true" />
-            <element signature="docComment;method#insert#0;class#UserServiceImpl#0" expanded="true" />
-            <element signature="docComment;method#findByUsername#0;class#UserServiceImpl#0" expanded="true" />
-            <element signature="docComment;method#findByUid#0;class#UserServiceImpl#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -660,45 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="163" column="35" lean-forward="true" selection-start-line="163" selection-start-column="35" selection-end-line="163" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/jl/myweb/service/UserServiceTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/MyWebApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/ResponseResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1176#1177#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -717,6 +736,132 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#updatePassword#0;class#UserMapper#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cn/jl/myweb/mapper/UserMapperTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="62" column="5" lean-forward="true" selection-start-line="51" selection-start-column="4" selection-end-line="62" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/web/userdata.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1901">
+          <caret line="312" column="7" lean-forward="true" selection-start-line="312" selection-start-column="7" selection-end-line="312" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/ex/PasswordNotMatchException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/ex/UserNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1688">
+          <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#UserServiceImpl#0" expanded="true" />
+            <element signature="docComment;method#getMd5Password#0;class#UserServiceImpl#0" expanded="true" />
+            <element signature="docComment;method#insert#0;class#UserServiceImpl#0" expanded="true" />
+            <element signature="docComment;method#findByUsername#0;class#UserServiceImpl#0" expanded="true" />
+            <element signature="docComment;method#findByUid#0;class#UserServiceImpl#0" expanded="true" />
+            <element signature="docComment;method#updatePassword#0;class#UserServiceImpl#0" expanded="true" />
+            <element signature="docComment;method#updateUserInfo#0;class#UserServiceImpl#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/ex/UpdateException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/util/ResponseResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#891#892#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#987#988#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1080#1081#0" expanded="true" />
+            <element signature="e#1103#1104#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cn/jl/myweb/service/UserServiceTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="81" column="47" lean-forward="true" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/MyWebApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/service/IUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="51" column="27" lean-forward="true" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+          <folding>
+            <element signature="docComment;class#IUserService#0" expanded="true" />
+            <element signature="docComment;method#login#0;class#IUserService#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/jl/myweb/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -49,5 +49,17 @@ public class UserMapperTestCase {
 		Integer rows = mapper.updatePassword(7,"123456","jinlong",new Date() );
 		System.out.println(rows);
 	}
+	@Test
+	public void updateUserInfo(){
+		User user = new User();
+		user.setPhone("136xxxx8006");
+		user.setEmail("kenny19940602@163.com");
+		user.setGender(1);
+		user.setUid(5);
+		user.setModifiedUser("超级管理员");
+		user.setModifiedTime(new Date());
+		Integer rows = mapper.updateUserInfo(user);
+		System.out.println(rows);
+	}
 
 }

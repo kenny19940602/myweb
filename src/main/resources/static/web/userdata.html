@@ -265,7 +265,7 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$.ajax({
-			"url":"/users/info",
+			"url":"/user/info",
 			"type":"GET",
 			"dataType":"json",
 			"success":function(json) {
@@ -290,7 +290,7 @@
 	<script type="text/javascript">
 	$("#btn-change-info").click(function(){
 		$.ajax({
-			"url":"/users/change_info",
+			"url":"/user/change_info",
 			"data":$("#form-change-info").serialize(),
 			"type":"POST",
 			"dataType":"json",

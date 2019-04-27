@@ -19,6 +19,12 @@ public class ResponseResult<T> implements Serializable {
 		super();
 	}
 
+	public ResponseResult(Integer state, T data) {
+		super();
+		this.state = state;
+		this.data = data;
+	}
+
 	public ResponseResult(Integer state, String message) {
 		super();
 		this.state = state;
