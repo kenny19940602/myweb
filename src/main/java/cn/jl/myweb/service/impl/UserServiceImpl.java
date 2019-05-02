@@ -1,16 +1,34 @@
 package cn.jl.myweb.service.impl;
 
-import cn.jl.myweb.entity.User;
-import cn.jl.myweb.mapper.UserMapper;
-import cn.jl.myweb.service.IUserService;
-import cn.jl.myweb.service.ex.*;
-import cn.jl.myweb.util.Log;
+import java.beans.IntrospectionException;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
-import java.util.UUID;
+import cn.jl.myweb.entity.ExcelBean;
+import cn.jl.myweb.entity.User;
+import cn.jl.myweb.mapper.UserMapper;
+import cn.jl.myweb.service.IUserService;
+import cn.jl.myweb.service.ex.InsertException;
+import cn.jl.myweb.service.ex.PasswordNotMatchException;
+import cn.jl.myweb.service.ex.UpdateException;
+import cn.jl.myweb.service.ex.UserNotFoundException;
+import cn.jl.myweb.service.ex.UsernameDuplicateException;
+import cn.jl.myweb.util.DateUtils;
+import cn.jl.myweb.util.ExcelUtils;
+import cn.jl.myweb.util.Log;
 
 /**
  * 处理用户数据的业务层实现类
@@ -130,9 +148,81 @@ public class UserServiceImpl implements IUserService{
         user.setModifiedTime(new Date());
         updateUserInfo(user);
     }
+    
+    @Override
+	public void changeAvatar(Integer uid, String avatar) throws UserNotFoundException, UpdateException {
+    	User result = findByUid(uid);
+    	if(result==null) {
+    		throw new UserNotFoundException("修改头像失败！尝试访问的用户不存在！");
+    	}
+    	if(result.getIsDelete().equals(1)){
+            throw new UserNotFoundException("修改头像失败！尝试访问的用户不存在！");
+        }
+    	updateAvatar(uid, avatar, result.getUsername(), new Date());
+		
+	}
 
+    @Override
+	public XSSFWorkbook exportUsersInfoExcel() {
+    	XSSFWorkbook book=null;
+		try {
+			List<User> usersInfo = downLoadUsers();
+			List<ExcelBean> ems=new ArrayList<>();
+			Map<Integer,List<ExcelBean>>map=new LinkedHashMap<>();
+			ems.add(new ExcelBean("用户uid","uid",0));
+			ems.add(new ExcelBean("用户名","username",0));
+			ems.add(new ExcelBean("密码","password",0));
+			ems.add(new ExcelBean("盐值","salt",0));
+			ems.add(new ExcelBean("性别","gender",0));
+			ems.add(new ExcelBean("电话","phone",0));
+			ems.add(new ExcelBean("邮箱","email",0));
+			ems.add(new ExcelBean("头像","avatar",0));
+			ems.add(new ExcelBean("是否删除","isDelete",0));
+			ems.add(new ExcelBean("创建人","createdUser",0));
+			ems.add(new ExcelBean("创建时间","createdTime",0));
+			ems.add(new ExcelBean("修改人","modifiedUser",0));
+			ems.add(new ExcelBean("修改时间","modifiedTime",0));
+			map.put(0, ems);
+//		List<User> afterChangeList=changeBuyerStatus(creditInfoList);
+			book=ExcelUtils.createExcelFile(User.class, usersInfo, map, "用户数据表");
+		} catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException | ClassNotFoundException
+				| IntrospectionException e) {
+			Log.error("UserServiceImpl exportUserInfoExcel 失败！");
+		}
+		return book;
+	};
 
-
+	public void uploadUsersInfoExcel(InputStream in, MultipartFile file) throws Exception {
+		List<List<Object>> listob = ExcelUtils.getBankListByExcel(in,file.getOriginalFilename());  
+		List<User> usersInfo=new ArrayList<User>();
+		for (int i = 0; i < listob.size(); i++) {  
+	            List<Object> ob = listob.get(i);  
+	            User user= new User();
+//	            #{username}, #{password},
+//				#{salt}, #{gender},
+//				#{phone}, #{email},
+//				#{avatar}, #{isDelete},
+//				#{createdUser}, #{createdTime},
+//				#{modifiedUser}, #{modifiedTime}
+				user.setUsername(String.valueOf(ob.get(0)));
+				user.setPassword(String.valueOf(ob.get(1)));
+				user.setSalt(ob.get(2)+"");
+				user.setGender(Integer.parseInt(String.valueOf(ob.get(3))));
+				user.setPhone(String.valueOf(ob.get(4)));
+				user.setEmail(String.valueOf(ob.get(5)));
+				user.setAvatar(ob.get(6)+"");
+				user.setIsDelete(Integer.parseInt(String.valueOf(ob.get(7))));
+				user.setCreatedUser(String.valueOf(ob.get(8)));
+				user.setCreatedTime(DateUtils.convertStrStyle(DateUtils.DEFAULT_DATE_STYLE, String.valueOf(ob.get(9))));
+				user.setModifiedUser(String.valueOf(ob.get(10)));
+				user.setModifiedTime(DateUtils.convertStrStyle(DateUtils.DEFAULT_DATE_STYLE, String.valueOf(ob.get(11))));
+				usersInfo.add(user);
+				System.out.println(user);
+	        }
+		for (User user : usersInfo) {
+			mapper.insert(user);
+		}
+	}
     /**
 	 * 获得MD5摘要算法后的密码
 	 * @param salt 加密的盐值
@@ -173,6 +263,12 @@ public class UserServiceImpl implements IUserService{
 	private User findByUid(Integer uid){return mapper.findByUid(uid);}
 
 	/**
+	 * 导出所有用户数据
+	 * @return 所有的用户数据
+	 */
+	private List<User> downLoadUsers(){return mapper.downLoadUsers();}
+	
+	/**
 	 * 修改用户密码
 	 * @param uid 用户的uid
 	 * @param password 用户要更改的密码
@@ -192,7 +288,7 @@ public class UserServiceImpl implements IUserService{
 	}
 
     /**
-     * 修改用户信息
+            * 修改用户信息
      * @param user 要修改的用户信息
      */
     private void updateUserInfo (User user){
@@ -201,5 +297,29 @@ public class UserServiceImpl implements IUserService{
             Log.error("修改用户信息发生异常");
             throw new UpdateException("发生未知错误！请重试！");
         }
-    };
+    }
+    
+    /**
+	 * 更新用户头像
+	 * @param uid 要更新头像的用户uid
+	 * @param avatar 要更新的头像
+	 * @param modifiedUser 修改人
+	 * @param modifiedTime 修改时间
+	 * @return
+	 */
+	private void updateAvatar(
+		    @Param("uid") Integer uid, 
+		    @Param("avatar") String avatar, 
+		    @Param("modifiedUser") String modifiedUser, 
+		    @Param("modifiedTime") Date modifiedTime) {
+		Integer rows = mapper.updateAvatar(uid, avatar, modifiedUser, modifiedTime);
+		if(rows!=1) {
+			throw new UpdateException("修改用户数据时出现未知错误！");
+		}
+	}
+
+
+	
+
+	
 }

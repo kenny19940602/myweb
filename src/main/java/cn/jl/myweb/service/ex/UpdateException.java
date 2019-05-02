@@ -6,7 +6,9 @@ package cn.jl.myweb.service.ex;
 public class UpdateException extends ServiceException {
 
 
-    public UpdateException() {
+	private static final long serialVersionUID = -7725331855076232671L;
+
+	public UpdateException() {
         super();
     }
 

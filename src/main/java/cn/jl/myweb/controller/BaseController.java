@@ -1,5 +1,11 @@
 package cn.jl.myweb.controller;
 
+import cn.jl.myweb.controller.ex.FileContentTypeException;
+import cn.jl.myweb.controller.ex.FileEmptyException;
+import cn.jl.myweb.controller.ex.FileIOException;
+import cn.jl.myweb.controller.ex.FileIllegalStateException;
+import cn.jl.myweb.controller.ex.FileSizeException;
+import cn.jl.myweb.controller.ex.FileUploadException;
 import cn.jl.myweb.service.ex.*;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -28,7 +34,7 @@ public abstract class BaseController {
 	/**
 	 * 	统一处理异常
 	 */
-	@ExceptionHandler(ServiceException.class)
+	@ExceptionHandler({ServiceException.class,FileUploadException.class})
 	public ResponseResult<Void> handleException(Throwable e){
 		ResponseResult<Void> rr = new ResponseResult<Void>();
 		rr.setMessage(e.getMessage());
@@ -42,6 +48,16 @@ public abstract class BaseController {
 			rr.setState(500);//插入数据异常
 		}else if(e instanceof UpdateException){
 			rr.setState(501);//修改数据异常
+		}else if(e instanceof FileEmptyException) {
+			rr.setState(600);//文件为空的异常
+		}else if(e instanceof FileSizeException) {
+			rr.setState(601);//文件过大或过小的异常 
+		}else if(e instanceof FileContentTypeException) {
+			rr.setState(602);//文件类型不匹配的异常
+		}else if(e instanceof FileIllegalStateException) {
+			rr.setState(603);//文件状体的异常
+		}else if(e instanceof FileIOException) {
+			rr.setState(604);//文件IO异常
 		}
 		return rr;
 		

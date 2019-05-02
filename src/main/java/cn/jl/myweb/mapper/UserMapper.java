@@ -1,9 +1,11 @@
 package cn.jl.myweb.mapper;
 
-import cn.jl.myweb.entity.User;
+import java.util.Date;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import java.util.Date;
+import cn.jl.myweb.entity.User;
 
 /**
  * 处理用户数据的持久层接口
@@ -32,6 +34,12 @@ public interface UserMapper {
 	User findByUid(Integer uid);
 
 	/**
+	 * 导出所有用户数据
+	 * @return 所有的用户数据
+	 */
+	List<User> downLoadUsers();
+	
+	/**
 	 * 修改用户密码
 	 * @param uid 用户的uid
 	 * @param password 用户要更改的密码
@@ -51,5 +59,19 @@ public interface UserMapper {
 	 * @return 受影响的行数
 	 */
 	Integer updateUserInfo (User user);
+	
+	/**
+	 * 更新用户头像
+	 * @param uid 要更新头像的用户uid
+	 * @param avatar 要更新的头像
+	 * @param modifiedUser 修改人
+	 * @param modifiedTime 修改时间
+	 * @return
+	 */
+	Integer updateAvatar(
+		    @Param("uid") Integer uid, 
+		    @Param("avatar") String avatar, 
+		    @Param("modifiedUser") String modifiedUser, 
+		    @Param("modifiedTime") Date modifiedTime);
 
 }

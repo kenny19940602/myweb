@@ -151,15 +151,6 @@
 		</footer>
 		<!--页脚结束-->
 	<script type="text/javascript">
-	function validate(){
-		var pwd = $("#pwd").val();
-		var pwd = $("pwd1").val();
-		if(pwd == pwd1){
-			$("#tishi").html("两次密码相同");
-			$("#tishi").css("color","green");
-			$()
-		}
-	}
 	$("#btn-reg").click(function(){
 		$.ajax({
 			"url":"/user/reg",
@@ -168,7 +159,8 @@
 			"dataType":"json",
 			"success":function(json) {
 				if (json.state == 200) {
-					alert("注册成功！");
+					alert(json.message);
+					location.href="login.html";
 				} else {
 					alert(json.message);
 				}

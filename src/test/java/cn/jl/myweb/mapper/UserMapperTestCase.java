@@ -1,14 +1,14 @@
 package cn.jl.myweb.mapper;
 
+import cn.jl.myweb.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import cn.jl.myweb.entity.User;
-
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -43,23 +43,28 @@ public class UserMapperTestCase {
 		User user = mapper.findByUid(7);
 		System.out.println(user);
 	}
+	
+	@Test
+	public void downLoadUsers(){
+		List<User> users = mapper.downLoadUsers();
+		System.out.println(users);
+	}
+
 
 	@Test
 	public void updatePassword(){
 		Integer rows = mapper.updatePassword(7,"123456","jinlong",new Date() );
 		System.out.println(rows);
 	}
+	
 	@Test
-	public void updateUserInfo(){
-		User user = new User();
-		user.setPhone("136xxxx8006");
-		user.setEmail("kenny19940602@163.com");
-		user.setGender(1);
-		user.setUid(5);
-		user.setModifiedUser("超级管理员");
-		user.setModifiedTime(new Date());
-		Integer rows = mapper.updateUserInfo(user);
-		System.out.println(rows);
+	public void updateAvatar() {
+	    Integer uid = 9;
+	    String avatar = "这里应该是头像的路径";
+	    String modifiedUser = "超级管理员";
+	    Date modifiedTime = new Date();
+	    Integer rows = mapper.updateAvatar(uid, avatar, modifiedUser, modifiedTime);
+	    System.err.println("rows=" + rows);
 	}
 
 }
