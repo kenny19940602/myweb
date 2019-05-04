@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.jl.myweb.mapper.AddressMapper">
+
+	<!-- 增加用户的收货地址 -->
+	<!-- Integer insertAddress(Address address) -->
+	<insert id="insertAddress">
+		INSERT INTO t_address (
+            uid, name,
+            province, city,
+            area, district,
+            zip, address,
+            phone, tel,
+            tag, is_default,
+            created_user, created_time,
+            modified_user, modified_time
+        ) VALUE (
+            #{uid}, #{name},
+            #{province}, #{city},
+            #{area}, #{district},
+            #{zip}, #{address},
+            #{phone}, #{tel},
+            #{tag}, #{isDefault},
+            #{createdUser}, #{createdTime},
+            #{modifiedUser}, #{modifiedTime}
+        )
+	</insert>
+	
+	<!-- 根据id删除收货地址数据 -->
+	<!-- Integer deleteByAid(Integer aid) -->
+	<delete id="deleteByAid">
+	    DELETE FROM t_address WHERE aid=#{aid}
+	</delete>
+	
+	<!-- 获取某用户最后修改的收货地址数据 -->
+	<!-- Address findLastModified(Integer uid) -->
+	<select id="findLastModified"
+	    resultType="cn.jl.myweb.entity.Address">
+	    SELECT 
+	        aid
+	    FROM 
+	        t_address 
+	    WHERE 
+	        uid=#{uid}
+	    ORDER BY
+	        modified_time DESC, aid DESC
+	    LIMIT
+	        0,1
+	</select>
+	
+	<!-- 统计指定用户的收货地址数据的数量 -->
+    <!-- Integer countByUid(Integer uid) -->
+    <select id="countByUid" 
+        resultType="java.lang.Integer">
+        SELECT 
+            COUNT(aid) 
+        FROM 
+            t_address 
+        WHERE 
+            uid=#{uid}
+    </select>
+    
+	<!-- 根据用户的uid查找用户收货地址 -->
+	<!-- List<Address> findAddress(Integer uid) -->
+	<select id="findAddress"
+		resultType="cn.jl.myweb.entity.Address">
+		SELECT 
+   			aid, name, 
+   			district, address, 
+   			phone, tag,
+   			is_default AS isDefault
+		FROM 
+		    t_address 
+		WHERE 
+		    uid=#{uid}
+		ORDER BY 
+  		    is_default DESC, modified_time DESC
+	</select>
+	
+	<!-- 根据收货地址id查询匹配的数据 -->
+	<!-- Address findByAid(Integer aid) -->
+	<select id="findByAid"
+	    resultType="cn.jl.myweb.entity.Address">
+	    SELECT 
+	        uid,is_default AS isDefault
+	    FROM 
+	        t_address 
+	    WHERE 
+	        aid=#{aid} 
+	</select>
+	
+	<!-- 将指定用户的所有收货地址设置为非默认 -->
+	<!-- Integer updateNonDefault(Integer uid) -->
+	<update id="updateNonDefault">
+	    UPDATE
+	        t_address
+	    SET
+	        is_default=0
+	    WHERE 
+	        uid=#{uid}
+	</update>
+	
+	<!-- 将指定的收货地址设置为默认 -->
+	<!-- Integer updateDefault(Integer aid) -->
+	<update id="updateDefault">
+	    UPDATE
+	        t_address
+	    SET
+	        is_default=1
+	    WHERE 
+	        aid=#{aid}
+	</update>
+	
+	<!-- 修改用户收货地址 -->
+	<!-- Integer updateAddress(Integer aid) -->
+	<update id="updateAddress">
+	    UPDATE
+	        t_address
+	    SET
+	        tag=#{tag},name=#{name},
+	        district=#{district},address=#{address},
+	        phone=#{phone},
+	        modified_user=#{modifiedUser}, 
+	        modified_time=#{modifiedTime}
+	    WHERE 
+	        aid=#{aid}
+	</update>
+	
+	
+	
+	
+</mapper>

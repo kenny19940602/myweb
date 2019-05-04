@@ -48,6 +48,8 @@ public abstract class BaseController {
 			rr.setState(500);//插入数据异常
 		}else if(e instanceof UpdateException){
 			rr.setState(501);//修改数据异常
+		}else if(e instanceof DeleteException) {
+			rr.setState(502);//删除的异常类
 		}else if(e instanceof FileEmptyException) {
 			rr.setState(600);//文件为空的异常
 		}else if(e instanceof FileSizeException) {
@@ -58,6 +60,10 @@ public abstract class BaseController {
 			rr.setState(603);//文件状体的异常
 		}else if(e instanceof FileIOException) {
 			rr.setState(604);//文件IO异常
+		}else if(e instanceof AddressNotFoundException) {
+			rr.setState(701);//收货地址不存在的异常
+		}else if(e instanceof AccessDeniedException) {
+			rr.setState(702);//收货地址归属异常
 		}
 		return rr;
 		

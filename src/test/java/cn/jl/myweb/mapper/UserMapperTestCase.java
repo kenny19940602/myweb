@@ -13,8 +13,6 @@ import java.util.List;
 
 /**
  * 用户数据持久层测试类
- * @author JinLong
- *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

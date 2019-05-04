@@ -297,7 +297,7 @@
 		showProvinceList();
 		
 		$("#city").append('<option value="0">----- 请选择 -----</option>');
-		$("#area").append('<option value="0">----- 请选择 -----</option>');
+		$("#area").append('<option value="0">----- 请选择 -----</option>'); 
 	});
 	
 	$("#province").change(function() {
@@ -309,13 +309,13 @@
 	
 	$("#city").change(function() {
 		showAreaList();
-	});
+	}); 
 	
 	function showProvinceList() {
 		$("#province").append('<option value="0">----- 请选择 -----</option>');
 		
 		$.ajax({
-			"url":"/districts/",
+			"url":"/district/",
 			"data":"parent=86",
 			"type":"GET",
 			"dataType":"json",
@@ -344,7 +344,7 @@
 		}
 		
 		$.ajax({
-			"url":"/districts/",
+			"url":"/district/",
 			"data":"parent=" + $("#province").val(),
 			"type":"GET",
 			"dataType":"json",
@@ -373,7 +373,7 @@
 		}
 		
 		$.ajax({
-			"url":"/districts/",
+			"url":"/district/",
 			"data":"parent=" + $("#city").val(),
 			"type":"GET",
 			"dataType":"json",
@@ -396,7 +396,7 @@
 	<script type="text/javascript">
 	$("#btn-addnew").click(function(){
 		$.ajax({
-			"url":"/addresses/addnew",
+			"url":"/address/insert",
 			"data":$("#form-addnew").serialize(),
 			"type":"POST",
 			"dataType":"json",

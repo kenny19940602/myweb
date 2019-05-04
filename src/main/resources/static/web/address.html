@@ -300,7 +300,7 @@
 	
 	function showAddressList() {
 		$.ajax({
-			"url":"/addresses/",
+			"url":"/address/",
 			"type":"GET",
 			"dataType":"json",
 			"success":function(json) {
@@ -314,7 +314,7 @@
 								+ '<td>#{name}</td>'
 								+ '<td>#{district}#{address}</td>'
 								+ '<td>#{phone}</td>'
-								+ '<td><a class="btn btn-xs btn-info" ><span class="fa fa-edit"></span> 修改</a></td>'
+								+ '<td><a class="btn btn-xs btn-info" onclick="update(#{list})><span class="fa fa-edit"></span> 修改</a></td>'
 								+ '<td><a class="btn btn-xs add-del btn-info" onclick="deleteByAid(#{aid})"><span class="fa fa-trash-o"></span> 删除</a></td>'
 								+ '<td><a class="btn btn-xs add-def btn-default" onclick="setDefault(#{aid})">设为默认</a></td>'
 								+ '</tr>';
@@ -325,6 +325,7 @@
 						html = html.replace(/#{district}/g, list[i].district);	
 						html = html.replace(/#{address}/g, list[i].address);	
 						html = html.replace(/#{phone}/g, list[i].phone);	
+						html = html.replace(/#{list}/g, list[i]);	
 								
 						$("#address-list").append(html);
 					}
@@ -338,7 +339,27 @@
 	
 	function setDefault(aid) {
 		$.ajax({
-			"url":"/addresses/" + aid + "/set_default",
+			"url":"/address/" + aid + "/set_default",
+			"type":"POST",
+			"dataType":"json",
+			"success":function(json) {
+				if (json.state == 200) {
+					// alert("修改成功！");
+					showAddressList();
+				} else {
+					alert(json.message);
+				}
+			},
+			"error":function() {
+				alert("您的登录信息已经过期，请重新登录！");
+				location.href = "login.html";
+			}
+		});
+	}
+	function update(list) {
+		$.ajax({
+			"url":"/address/update",
+			"data":list,
 			"type":"POST",
 			"dataType":"json",
 			"success":function(json) {
@@ -358,7 +379,7 @@
 	
 	function deleteByAid(aid) {
 		$.ajax({
-			"url":"/addresses/" + aid + "/delete",
+			"url":"/address/" + aid + "/delete",
 			"type":"POST",
 			"dataType":"json",
 			"success":function(json) {

@@ -12,8 +12,6 @@ import cn.jl.myweb.service.ex.ServiceException;
 
 /**
  * 用户数据业务层测试类
- * @author JinLong
- *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
