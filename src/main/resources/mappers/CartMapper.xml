@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.jl.myweb.mapper.CartMapper">
+
+    <!-- 插入购物车数据 -->
+    <!-- Integer insert(Cart cart) -->
+    <insert id="insert">
+        INSERT INTO t_cart (
+            uid, gid,
+            num,
+            created_user, created_time,
+            modified_user, modified_time
+        ) VALUE (
+            #{uid}, #{gid},
+            #{num},
+            #{createdUser}, #{createdTime},
+            #{modifiedUser}, #{modifiedTime}
+        )
+    </insert>
+
+    <!-- 修改购物车数据中商品的数量  -->
+    <!-- Integer updateNum(
+        @Param("cid") Integer cid, 
+        @Param("num") Integer num) -->
+    <update id="updateNum">
+        UPDATE 
+            t_cart 
+        SET 
+            num=#{num},
+            modified_user=#{modifiedUser},
+            modified_time=#{modifiedTime}
+        WHERE 
+            cid=#{cid}
+    </update>
+
+    <!-- 获取某用户在购物车中添加的指定商品的数据 -->
+    <!-- Cart findByUidAndGid(
+        @Param("uid") Integer uid, 
+        @Param("gid") Long gid) -->
+    <select id="findByUidAndGid"
+        resultType="cn.jl.myweb.entity.Cart">
+        SELECT 
+            cid, num 
+        FROM 
+            t_cart 
+        WHERE 
+            uid=#{uid} AND gid=#{gid}
+    </select>
+
+	<!-- 获取某用户的购物车数据列表 -->
+	<!-- List<CartVO> findByUid(Integer uid) -->
+	<select id="findByUid"
+	    resultType="cn.jl.myweb.vo.CartVO">
+	    SELECT 
+	        uid, cid, 
+	        gid, t_cart.num,
+	        title, image, 
+	        price
+	    FROM 
+	        t_cart 
+	    LEFT JOIN
+	        t_goods
+	    ON
+	        t_cart.gid=t_goods.id
+	    WHERE 
+	        uid=#{uid}
+	    ORDER BY 
+	        t_cart.modified_time DESC, cid DESC
+	</select>
+	
+	<!-- 根据购物车数据id获取购物车数据 -->
+	<!-- Cart findByCid(Integer cid) -->
+	<select id="findByCid"
+	    resultType="cn.jl.myweb.entity.Cart">
+	    SELECT 
+	        uid, num 
+	    FROM 
+	        t_cart 
+	    WHERE 
+	        cid=#{cid}
+	</select>
+	
+	<!-- 查询用户订单数据 -->
+	<!-- List<CartVO> findByCids(Integer[] cids) -->
+	<select id="findByCids" resultType="cn.jl.myweb.vo.CartVO">
+	    SELECT 
+	        uid, cid, gid, t_cart.num,
+	        title, image, price
+	    FROM 
+	        t_cart 
+	    LEFT JOIN
+	        t_goods
+	    ON
+	        t_cart.gid=t_goods.id
+	    WHERE 
+	        cid IN (
+	            <foreach collection="array"
+	                item="cid" separator=",">
+	                #{cid}
+	            </foreach>
+	        )
+	    ORDER BY 
+	        t_cart.modified_time DESC, cid DESC
+	</select>
+	
+	<!-- 根据cid删除购物车数据 -->
+	<!-- Integer delByCid(Integer cid) -->
+	<delete id="delByCid">
+		DELETE FROM 
+			t_cart
+		WHERE 
+			cid=#{cid}
+	</delete>
+	
+</mapper>

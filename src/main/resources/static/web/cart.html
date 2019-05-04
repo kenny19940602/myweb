@@ -269,7 +269,7 @@
 	
 	function showCartList() {
 		$.ajax({
-			"url":"/carts/",
+			"url":"/cart/",
 			"type":"GET",
 			"dataType":"json",
 			"success":function(json) {
@@ -284,12 +284,12 @@
 							+ '<td>#{title}</td>'
 							+ '<td>¥<span id="price-#{cid}">#{price}</span></td>'
 							+ '<td>'
-							+ '<input type="button" value="-" class="num-btn" onclick="reduceNum(1)" />'
+							+ '<input id="bt1-#{cid}" type="button" value="-" class="num-btn" onclick="redNum(#{cid})" />'
 							+ '<input id="num-#{cid}" type="text" size="2" readonly="readonly" class="num-text" value="#{num}">'
 							+ '<input class="num-btn" type="button" value="+" onclick="addNum(#{cid})" />'
 							+ '</td>'
 							+ '<td>¥<span id="total-price-#{cid}">#{totalPrice}</span></td>'
-							+ '<td><input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除"/></td>'
+							+ '<td><input type="button" onclick="del(#{cid})" class="cart-del btn btn-default btn-xs" value="删除"/></td>'
 							+ '</tr>';
 								
 						html = html.replace(/#{cid}/g, list[i].cid);	
@@ -310,7 +310,7 @@
 	
 	function addNum(cid) {
 		$.ajax({
-			"url":"/carts/" + cid + "/add_num",
+			"url":"/cart/" + cid + "/add_num",
 			"type":"POST",
 			"dataType":"json",
 			"success":function(json) {
@@ -320,6 +320,55 @@
 					$("#num-" + cid).val(n);
 					var tp = parseInt($("#price-" + cid).html()) * n;
 					$("#total-price-" + cid).html(tp);
+					$("#bt1-"+cid).attr("disabled",false);
+				} else {
+					alert(json.message);
+				}
+			},
+			"error":function() {
+				alert("您的登录信息已经过期，请重新登录！");
+				location.href = "login.html";
+			}
+		});
+	}
+	
+	function redNum(cid) {
+		var num = ($("#num-" + cid).val());
+		if(num<=1){
+			$("#bt1-"+cid).attr("disabled",true);
+		}else{
+			$("#bt1-"+cid).attr("disabled",false);
+			$.ajax({
+				"url":"/cart/" + cid + "/red_num",
+				"type":"POST",
+				"dataType":"json",
+				"success":function(json) {
+					if (json.state == 200) {
+						// showCartList();
+						$("#bt1").attr("disabled",true);
+						var n = parseInt($("#num-" + cid).val()) - 1;
+						$("#num-" + cid).val(n);
+						var tp = parseInt($("#price-" + cid).html()) * n;
+						$("#total-price-" + cid).html(tp);
+					} else {
+						alert(json.message);
+					}
+				},
+				"error":function() {
+					alert("您的登录信息已经过期，请重新登录！");
+					location.href = "login.html";
+				}
+			});
+		}
+	}
+	function del(cid) {
+		$.ajax({
+			"url":"/cart/" + cid + "/del",
+			"type":"POST",
+			"dataType":"json",
+			"success":function(json) {
+				if (json.state == 200) {
+					showCartList();
 				} else {
 					alert(json.message);
 				}

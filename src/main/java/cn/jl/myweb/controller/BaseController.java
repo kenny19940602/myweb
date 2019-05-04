@@ -64,6 +64,8 @@ public abstract class BaseController {
 			rr.setState(701);//收货地址不存在的异常
 		}else if(e instanceof AccessDeniedException) {
 			rr.setState(702);//收货地址归属异常
+		}else if(e instanceof CartNotFoundException) {
+			rr.setState(703);//购物车数据归属异常
 		}
 		return rr;
 		

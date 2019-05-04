@@ -24,6 +24,7 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         excludePatterns.add("/js/**");
         excludePatterns.add("/images/**");
         excludePatterns.add("/district/**");
+        excludePatterns.add("/goods/**");
 
         excludePatterns.add("/web/register.html");
         excludePatterns.add("/user/reg");
